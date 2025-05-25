@@ -49,6 +49,7 @@ export default function TopMenu() {
       </Menu.Target>
       <Menu.Dropdown>
         {isAdmin && (
+          <>
           <Menu.Label>{t("Workspace")}</Menu.Label>
   
           <Menu.Item
@@ -68,6 +69,7 @@ export default function TopMenu() {
           </Menu.Item>
   
           <Menu.Divider />
+          </>
         )}
 
         <Menu.Label>{t("Account")}</Menu.Label>
