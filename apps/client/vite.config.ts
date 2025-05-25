@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
     COLLAB_URL,
     BILLING_TRIAL_DAYS,
     APP_NAME,
+    DISABLE_SHARING,
   } = loadEnv(mode, envPath, "");
 
   return {
@@ -27,6 +28,7 @@ export default defineConfig(({ mode }) => {
         COLLAB_URL,
         BILLING_TRIAL_DAYS,
         APP_NAME,
+        DISABLE_SHARING,
       },
       APP_VERSION: JSON.stringify(process.env.npm_package_version),
     },
