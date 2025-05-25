@@ -22,7 +22,7 @@ import { Link, useParams } from "react-router-dom";
 import { extractPageSlugId, getPageIcon } from "@/lib";
 import { useTranslation } from "react-i18next";
 import CopyTextButton from "@/components/common/copy.tsx";
-import { getAppUrl } from "@/lib/config.ts";
+import { getAppUrl, isSharingAllowed } from "@/lib/config.ts";
 import { buildPageUrl } from "@/features/page/page.utils.ts";
 import classes from "@/features/share/components/share.module.css";
 
@@ -113,6 +113,11 @@ export default function ShareModal({ readOnly }: ShareModalProps) {
     </Group>
   ), [publicLink]);
 
+  
+  if (!isSharingAllowed()) {
+    return <></>;
+  }
+  
   return (
     <Popover width={350} position="bottom" withArrow shadow="md">
       <Popover.Target>
