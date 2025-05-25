@@ -183,6 +183,17 @@ export class EnvironmentService {
     return isStandalone === 'true';
   }
 
+  getAppName(): string {
+    return this.configService.get<string>('APP_NAME');
+  }
+
+  isSharingDisabled(): boolean {
+    const isDisabled = this.configService
+      .get<string>('DISABLE_SHARING', 'false')
+      .toLowerCase();
+    return isDisabled === 'true';
+  }
+
   isDisableTelemetry(): boolean {
     const disable = this.configService
       .get<string>('DISABLE_TELEMETRY', 'false')
