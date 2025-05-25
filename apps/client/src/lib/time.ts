@@ -8,10 +8,10 @@ export function timeAgo(date: Date) {
 
 export function formattedDate(date: Date) {
   if (isToday(date)) {
-    return i18n.t("Today, {{time}}", { time: format(date, "h:mma") });
+    return i18n.t("Today, {{time}}", { time: format(date, "H:mm") });
   } else if (isYesterday(date)) {
-    return i18n.t("Yesterday, {{time}}", { time: format(date, "h:mma") });
+    return i18n.t("Yesterday, {{time}}", { time: format(date, "H:mm") });
   } else {
-    return format(date, "MMM dd, yyyy, h:mma");
+    return format(date, "dd.MMM yyyy, H:mm");
   }
 }
