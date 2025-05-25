@@ -8,7 +8,7 @@ declare global {
 }
 
 export function getAppName(): string {
-  return getConfigValue("APP_NAME");
+  return getConfigValue("APP_NAME","HUB");
 }
 
 export function getAppUrl(): string {
@@ -79,7 +79,7 @@ export function getBillingTrialDays() {
 }
 
 export function isSharingDisabled(): boolean {
-  return castToBoolean(getConfigValue("DISABLE_SHARING"));
+  return castToBoolean(getConfigValue("DISABLE_SHARING","FALSE"));
 }
 
 function getConfigValue(key: string, defaultValue: string = undefined): string {
