@@ -228,7 +228,7 @@ export default function SettingsSidebar() {
 
       <ScrollArea w="100%">{menuItems}</ScrollArea>
 
-      {!isCloud() && <AppVersion />}
+      {!isCloud() && isAdmin && <AppVersion />}
 
       {isCloud() && (
         <div className={classes.text}>
