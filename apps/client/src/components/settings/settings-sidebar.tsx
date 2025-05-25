@@ -163,7 +163,8 @@ export default function SettingsSidebar() {
   };
 
   const menuItems = groupedData.map((group) => {
-    if (group.heading === ("System" || "Workspace") && (!isAdmin || isCloud())) {
+
+    if ((group.heading === "System" || group.heading === "Workspace") && (!isAdmin || isCloud())) {
       return null;
     }
 
