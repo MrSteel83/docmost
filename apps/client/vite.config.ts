@@ -13,6 +13,7 @@ export default defineConfig(({ mode }) => {
     SUBDOMAIN_HOST,
     COLLAB_URL,
     BILLING_TRIAL_DAYS,
+    APP_NAME,
   } = loadEnv(mode, envPath, "");
 
   return {
@@ -25,6 +26,7 @@ export default defineConfig(({ mode }) => {
         SUBDOMAIN_HOST,
         COLLAB_URL,
         BILLING_TRIAL_DAYS,
+        APP_NAME,
       },
       APP_VERSION: JSON.stringify(process.env.npm_package_version),
     },
