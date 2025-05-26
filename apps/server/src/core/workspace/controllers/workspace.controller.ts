@@ -100,7 +100,7 @@ export class WorkspaceController {
     @AuthWorkspace() workspace: Workspace,
   ) {
     const ability = this.workspaceAbility.createForUser(user, workspace);
-    if (ability.cannot(WorkspaceCaslAction.Read, WorkspaceCaslSubject.Member)) {
+    if (ability.cannot(WorkspaceCaslAction.Manage, WorkspaceCaslSubject.Member)) {
       throw new ForbiddenException();
     }
 
@@ -167,7 +167,7 @@ export class WorkspaceController {
     pagination: PaginationOptions,
   ) {
     const ability = this.workspaceAbility.createForUser(user, workspace);
-    if (ability.cannot(WorkspaceCaslAction.Read, WorkspaceCaslSubject.Member)) {
+    if (ability.cannot(WorkspaceCaslAction.Manage, WorkspaceCaslSubject.Member)) {
       throw new ForbiddenException();
     }
 
