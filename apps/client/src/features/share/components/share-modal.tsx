@@ -113,7 +113,7 @@ export default function ShareModal({ readOnly }: ShareModalProps) {
     </Group>
   ), [publicLink]);
 
-  
+  console.log("Sharing disabled:", isSharingDisabled())
   if (isSharingDisabled()) {
     return <></>;
   }
