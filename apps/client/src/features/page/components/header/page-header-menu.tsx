@@ -36,6 +36,7 @@ import { formattedDate, timeAgo } from "@/lib/time.ts";
 import MovePageModal from "@/features/page/components/move-page-modal.tsx";
 import { useTimeAgo } from "@/hooks/use-time-ago.tsx";
 import ShareModal from "@/features/share/components/share-modal.tsx";
+import useUserRole from "@/hooks/use-user-role.tsx";
 
 interface PageHeaderMenuProps {
   readOnly?: boolean;
@@ -107,6 +108,7 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
   ] = useDisclosure(false);
   const [pageEditor] = useAtom(pageEditorAtom);
   const pageUpdatedAt = useTimeAgo(page?.updatedAt);
+  const { isAdmin } = useUserRole();
 
   const handleCopyLink = () => {
     const pageUrl =
@@ -178,14 +180,16 @@ function PageActionMenu({ readOnly }: PageActionMenuProps) {
               {t("Move")}
             </Menu.Item>
           )}
-
+          
+          {isAdmin && (
           <Menu.Item
             leftSection={<IconFileExport size={16} />}
             onClick={openExportModal}
           >
             {t("Export")}
           </Menu.Item>
-
+          )}
+          
           <Menu.Item
             leftSection={<IconPrinter size={16} />}
             onClick={handlePrint}
