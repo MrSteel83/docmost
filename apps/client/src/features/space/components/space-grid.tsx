@@ -9,10 +9,12 @@ import { Link } from "react-router-dom";
 import classes from "./space-grid.module.css";
 import { formatMemberCount } from "@/lib";
 import { useTranslation } from "react-i18next";
+import useUserRole from "@/hooks/use-user-role.tsx";
 
 export default function SpaceGrid() {
   const { t } = useTranslation();
   const { data, isLoading } = useGetSpacesQuery({ page: 1 });
+  const { isAdmin } = useUserRole();
 
   const cards = data?.items.map((space, index) => (
     <Card
@@ -37,10 +39,11 @@ export default function SpaceGrid() {
       <Text fz="md" fw={500} mt="xs" className={classes.title}>
         {space.name}
       </Text>
-
-      <Text c="dimmed" size="xs" fw={700} mt="md">
-        {formatMemberCount(space.memberCount, t)}
-      </Text>
+      {isAdmin && (
+          <Text c="dimmed" size="xs" fw={700} mt="md">
+            {formatMemberCount(space.memberCount, t)}
+          </Text>
+      )}
     </Card>
   ));
 
