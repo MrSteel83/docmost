@@ -157,7 +157,7 @@ export class SpaceController {
       spaceIdDto.spaceId,
     );
 
-    if (ability.cannot(SpaceCaslAction.Read, SpaceCaslSubject.Member)) {
+    if (ability.cannot(SpaceCaslAction.Manage, SpaceCaslSubject.Member)) {
       throw new ForbiddenException();
     }
 
