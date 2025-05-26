@@ -113,17 +113,22 @@ export function SpaceSidebar() {
               </div>
             </UnstyledButton>
 
-            <UnstyledButton className={classes.menu} onClick={openSettings}>
-              <div className={classes.menuItemInner}>
-                <IconSettings
-                  size={18}
-                  className={classes.menuItemIcon}
-                  stroke={2}
-                />
-                <span>{t("Space settings")}</span>
-              </div>
-            </UnstyledButton>
-
+            {spaceAbility.can(
+              SpaceCaslAction.Manage,
+              SpaceCaslSubject.Settings,
+            ) && (
+              <UnstyledButton className={classes.menu} onClick={openSettings}>
+                <div className={classes.menuItemInner}>
+                  <IconSettings
+                    size={18}
+                    className={classes.menuItemIcon}
+                    stroke={2}
+                  />
+                  <span>{t("Space settings")}</span>
+                </div>
+              </UnstyledButton>
+            )}
+            
             {spaceAbility.can(
               SpaceCaslAction.Manage,
               SpaceCaslSubject.Page,
@@ -213,61 +218,66 @@ function SpaceMenu({ spaceId, onSpaceSettings }: SpaceMenuProps) {
 
   return (
     <>
-      <Menu width={200} shadow="md" withArrow>
-        <Menu.Target>
-          <Tooltip
-            label={t("Import pages & space settings")}
-            withArrow
-            position="top"
-          >
-            <ActionIcon
-              variant="default"
-              size={18}
-              aria-label={t("Space menu")}
-            >
-              <IconDots />
-            </ActionIcon>
-          </Tooltip>
-        </Menu.Target>
-
-        <Menu.Dropdown>
-          <Menu.Item
-            onClick={openImportModal}
-            leftSection={<IconArrowDown size={16} />}
-          >
-            {t("Import pages")}
-          </Menu.Item>
-
-          <Menu.Item
-            onClick={openExportModal}
-            leftSection={<IconFileExport size={16} />}
-          >
-            {t("Export space")}
-          </Menu.Item>
-
-          <Menu.Divider />
-
-          <Menu.Item
-            onClick={onSpaceSettings}
-            leftSection={<IconSettings size={16} />}
-          >
-            {t("Space settings")}
-          </Menu.Item>
-        </Menu.Dropdown>
-      </Menu>
-
-      <PageImportModal
-        spaceId={spaceId}
-        open={importOpened}
-        onClose={closeImportModal}
-      />
-
-      <ExportModal
-        type="space"
-        id={spaceId}
-        open={exportOpened}
-        onClose={closeExportModal}
-      />
+      {spaceAbility.can(
+          SpaceCaslAction.Manage,
+          SpaceCaslSubject.Settings,
+      ) && (
+          <Menu width={200} shadow="md" withArrow>
+            <Menu.Target>
+              <Tooltip
+                label={t("Import pages & space settings")}
+                withArrow
+                position="top"
+              >
+                <ActionIcon
+                  variant="default"
+                  size={18}
+                  aria-label={t("Space menu")}
+                >
+                  <IconDots />
+                </ActionIcon>
+              </Tooltip>
+            </Menu.Target>
+    
+            <Menu.Dropdown>
+              <Menu.Item
+                onClick={openImportModal}
+                leftSection={<IconArrowDown size={16} />}
+              >
+                {t("Import pages")}
+              </Menu.Item>
+    
+              <Menu.Item
+                onClick={openExportModal}
+                leftSection={<IconFileExport size={16} />}
+              >
+                {t("Export space")}
+              </Menu.Item>
+    
+              <Menu.Divider />
+    
+              <Menu.Item
+                onClick={onSpaceSettings}
+                leftSection={<IconSettings size={16} />}
+              >
+                {t("Space settings")}
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+    
+          <PageImportModal
+            spaceId={spaceId}
+            open={importOpened}
+            onClose={closeImportModal}
+          />
+    
+          <ExportModal
+            type="space"
+            id={spaceId}
+            open={exportOpened}
+            onClose={closeExportModal}
+          />
+      )}
     </>
   );
 }
