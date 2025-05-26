@@ -215,13 +215,12 @@ function SpaceMenu({ spaceId, onSpaceSettings }: SpaceMenuProps) {
     useDisclosure(false);
   const [exportOpened, { open: openExportModal, close: closeExportModal }] =
     useDisclosure(false);
-
+  const spaceRules = space?.membership?.permissions;
+  const spaceAbility = useSpaceAbility(spaceRules);
+  
   return (
     <>
-      {spaceAbility.can(
-          SpaceCaslAction.Manage,
-          SpaceCaslSubject.Settings,
-      ) && (
+      {spaceAbility.can( SpaceCaslAction.Manage, SpaceCaslSubject.Settings ) && (
           <Menu width={200} shadow="md" withArrow>
             <Menu.Target>
               <Tooltip
@@ -264,7 +263,7 @@ function SpaceMenu({ spaceId, onSpaceSettings }: SpaceMenuProps) {
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
-    
+        )}
           <PageImportModal
             spaceId={spaceId}
             open={importOpened}
@@ -277,7 +276,7 @@ function SpaceMenu({ spaceId, onSpaceSettings }: SpaceMenuProps) {
             open={exportOpened}
             onClose={closeExportModal}
           />
-      )}
+      
     </>
   );
 }
