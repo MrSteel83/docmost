@@ -25,9 +25,9 @@ import React from "react";
 const formSchema = z.object({
   email: z
     .string()
-    .min(1, { message: "email is required" })
-    .email({ message: "Invalid email address" }),
-  password: z.string().min(1, { message: "Password is required" }),
+    .min(1, { message: t("email is required") })
+    .email({ message: t("Invalid email address") }),
+  password: z.string().min(1, { message: t("Password is required") }),
 });
 
 export function LoginForm() {
