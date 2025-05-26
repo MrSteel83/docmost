@@ -22,9 +22,10 @@ import { Link, useParams } from "react-router-dom";
 import { extractPageSlugId, getPageIcon } from "@/lib";
 import { useTranslation } from "react-i18next";
 import CopyTextButton from "@/components/common/copy.tsx";
-import { getAppUrl, isSharingDisabled } from "@/lib/config.ts";
+import { getAppUrl } from "@/lib/config.ts";
 import { buildPageUrl } from "@/features/page/page.utils.ts";
 import classes from "@/features/share/components/share.module.css";
+import useUserRole from "@/hooks/use-user-role.tsx";
 
 interface ShareModalProps {
   readOnly: boolean;
@@ -35,6 +36,7 @@ export default function ShareModal({ readOnly }: ShareModalProps) {
   const pageId = extractPageSlugId(pageSlug);
   const { data: share } = useShareForPageQuery(pageId);
   const { spaceSlug } = useParams();
+  const { isAdmin } = useUserRole();
   const createShareMutation = useCreateShareMutation();
   const updateShareMutation = useUpdateShareMutation();
   const deleteShareMutation = useDeleteShareMutation();
@@ -113,8 +115,8 @@ export default function ShareModal({ readOnly }: ShareModalProps) {
     </Group>
   ), [publicLink]);
 
-  console.log("Sharing disabled:", isSharingDisabled())
-  if (isSharingDisabled()) {
+  //diable sharing for non admins/owners
+  if (!isAdmin) {
     return <></>;
   }
   
