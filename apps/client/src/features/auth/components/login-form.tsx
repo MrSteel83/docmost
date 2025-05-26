@@ -22,14 +22,6 @@ import { useWorkspacePublicDataQuery } from "@/features/workspace/queries/worksp
 import { Error404 } from "@/components/ui/error-404.tsx";
 import React from "react";
 
-const formSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: t("email is required") })
-    .email({ message: t("Invalid email address") }),
-  password: z.string().min(1, { message: t("Password is required") }),
-});
-
 export function LoginForm() {
   const { t } = useTranslation();
   const { signIn, isLoading } = useAuth();
@@ -41,6 +33,14 @@ export function LoginForm() {
     error,
   } = useWorkspacePublicDataQuery();
 
+  const formSchema = z.object({
+    email: z
+      .string()
+      .min(1, { message: t("email is required") })
+      .email({ message: t("Invalid email address") }),
+    password: z.string().min(1, { message: t("Password is required") }),
+  });
+  
   const form = useForm<ILogin>({
     validate: zodResolver(formSchema),
     initialValues: {
