@@ -62,6 +62,7 @@ import MovePageModal from "../../components/move-page-modal.tsx";
 import { mobileSidebarAtom } from "@/components/layouts/global/hooks/atoms/sidebar-atom.ts";
 import { useToggleSidebar } from "@/components/layouts/global/hooks/hooks/use-toggle-sidebar.ts";
 import CopyPageModal from "../../components/copy-page-modal.tsx";
+import useUserRole from "@/hooks/use-user-role.tsx";
 
 interface SpaceTreeProps {
   spaceId: string;
@@ -462,6 +463,8 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
     notifications.show({ message: t("Link copied") });
   };
 
+  const { isAdmin } = useUserRole();
+
   return (
     <>
       <Menu shadow="md" width={200}>
@@ -493,16 +496,18 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
             {t("Copy link")}
           </Menu.Item>
 
-          <Menu.Item
-            leftSection={<IconFileExport size={16} />}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              openExportModal();
-            }}
-          >
-            {t("Export page")}
-          </Menu.Item>
+          {isAdmin && (
+            <Menu.Item
+              leftSection={<IconFileExport size={16} />}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openExportModal();
+              }}
+            >
+              {t("Export page")}
+            </Menu.Item>
+          )}
 
           {!(treeApi.props.disableEdit as boolean) && (
             <>
