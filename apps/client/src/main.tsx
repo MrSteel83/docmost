@@ -23,10 +23,10 @@ export const queryClient = new QueryClient({
   },
 });
 
+document.title = import.meta.env.VITE_APP_TITLE || "Docmost";
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement;
-  document.title = import.meta.env.VITE_APP_TITLE || "Docmost";
+  document.getElementById("root") as HTMLElement 
 );
 
 root.render(
