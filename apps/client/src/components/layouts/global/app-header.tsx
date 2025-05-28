@@ -1,4 +1,4 @@
-import { Badge, Group, Text, Tooltip } from "@mantine/core";
+import { Badge, Group, Text, Tooltip, Stack } from "@mantine/core";
 import classes from "./app-header.module.css";
 import React from "react";
 import TopMenu from "@/components/layouts/global/top-menu.tsx";
@@ -62,7 +62,7 @@ export function AppHeader() {
             </>
           )}
           
-          <Group direction="column" align="start" gap={2}>
+          <Stack align="start" gap={2}>
             <Link to="/home">
               <img
                 src="/app_logo.png"
@@ -79,7 +79,7 @@ export function AppHeader() {
             >
               {getAppName()}
             </Text>
-          </Group>
+          </Stack>
 
           <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
             {items}
