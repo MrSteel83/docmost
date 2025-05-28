@@ -62,7 +62,7 @@ export function AppHeader() {
             </>
           )}
           
-          <Stack align="start">
+          <Stack align="start" gap={2}>
             <Link to="/home">
               <img
                 src="/app_logo.png"
