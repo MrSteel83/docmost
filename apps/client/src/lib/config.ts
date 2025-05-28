@@ -79,8 +79,7 @@ export function getBillingTrialDays() {
 }
 
 export function isSharingDisabled(): boolean {
-  //return castToBoolean(getConfigValue("DISABLE_SHARING","FALSE"));
-  return (process.env.DISABLE_SHARING?.toLowerCase() === 'true');
+  return castToBoolean(getConfigValue("DISABLE_SHARING","FALSE"));
 }
 
 function getConfigValue(key: string, defaultValue: string = undefined): string {
