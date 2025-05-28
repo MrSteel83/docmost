@@ -65,20 +65,20 @@ export function AppHeader() {
           <Group direction="column" align="start" gap={2}>
             <Link to="/home">
               <img
-                src="app_logo.png"
+                src="/app_logo.png"
                 alt={getAppName()}
                 height={32}
                 style={{ objectFit: "contain" }}
               />
             </Link>
-            <Anchor
+            <Text
               size="xs"
               component={Link}
               to="/home"
               style={{ color: "inherit", cursor: "pointer", userSelect: "none" }}
             >
               {getAppName()}
-            </Anchor>
+            </Text>
           </Group>
 
           <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
