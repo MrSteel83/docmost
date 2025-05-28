@@ -62,22 +62,22 @@ export function AppHeader() {
             </>
           )}
           
-          <Stack align="start" gap={2}>
+          <Stack align="start" gap="xs">
             <Link to="/home">
               <img
                 src="/app_logo.png"
                 alt={getAppName()}
-                height={32}
+                height={14}
                 style={{ objectFit: "contain" }}
               />
             </Link>
             <Text
               size="xs"
               component={Link}
-              to="/home"
+              to="https://docmost.com"
               style={{ color: "inherit", cursor: "pointer", userSelect: "none" }}
             >
-              {getAppName()}
+              powered by Docmost
             </Text>
           </Stack>
 
