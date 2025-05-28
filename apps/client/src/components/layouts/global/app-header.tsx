@@ -62,13 +62,13 @@ export function AppHeader() {
             </>
           )}
           
-          <Stack align="start" gap="xs">
+          <Stack align="start">
             <Link to="/home">
               <img
                 src="/app_logo.png"
                 alt={getAppName()}
                 height={14}
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "contain", marginBottom: 2 }}
               />
             </Link>
             <Text
