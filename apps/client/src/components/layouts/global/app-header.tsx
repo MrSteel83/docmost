@@ -13,7 +13,7 @@ import { useToggleSidebar } from "@/components/layouts/global/hooks/hooks/use-to
 import SidebarToggle from "@/components/ui/sidebar-toggle-button.tsx";
 import { useTranslation } from "react-i18next";
 import useTrial from "@/ee/hooks/use-trial.tsx";
-import { isCloud } from "@/lib/config.ts";
+import { isCloud, getAppName } from "@/lib/config.ts";
 
 const links = [{ link: APP_ROUTE.HOME, label: "Home" }];
 
@@ -61,16 +61,25 @@ export function AppHeader() {
               </Tooltip>
             </>
           )}
-
-          <Text
-            size="lg"
-            fw={600}
-            style={{ cursor: "pointer", userSelect: "none" }}
-            component={Link}
-            to="/home"
-          >
-            Docmost
-          </Text>
+          
+          <Group direction="column" align="start" gap={2}>
+            <Link to="/home">
+              <img
+                src="app_logo.png"
+                alt={getAppName()}
+                height={32}
+                style={{ objectFit: "contain" }}
+              />
+            </Link>
+            <Anchor
+              size="xs"
+              component={Link}
+              to="/home"
+              style={{ color: "inherit", cursor: "pointer", userSelect: "none" }}
+            >
+              {getAppName()}
+            </Anchor>
+          </Group>
 
           <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
             {items}
