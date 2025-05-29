@@ -66,7 +66,6 @@ export function AppHeader() {
             <Link to="/home" style={{ display: "flex", alignItems: "center" }}>
               <img
                 src="app_logo.png"
-                alt={getAppName()}
                 height={26}
                 style={{ objectFit: "contain", marginRight: 8 }}
               />
