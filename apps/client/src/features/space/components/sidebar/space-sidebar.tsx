@@ -192,6 +192,18 @@ export function SpaceSidebar() {
             />
           </div>
         </div>
+
+        <div className={classes.footer}>
+          <a
+            href="https://docmost.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            powered by <strong>Docmost</strong>
+          </a>
+        </div>
+        
       </div>
 
       <SpaceSettingsModal
