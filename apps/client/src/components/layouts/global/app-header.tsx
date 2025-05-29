@@ -67,17 +67,19 @@ export function AppHeader() {
               <img
                 src="app_logo.png"
                 alt={getAppName()}
-                height={32}
-                style={{ objectFit: "contain", marginRight: 4 }}
+                height={26}
+                style={{ objectFit: "contain", marginRight: 8 }}
               />
-              <Text
-                size="lg"
-                fw={600}
-                style={{ color: "inherit", cursor: "pointer", userSelect: "none" }}
-              >
-                {getAppName()}
-              </Text>
             </Link>
+            <Text
+              size="lg"
+              fw={600}
+              style={{ cursor: "pointer", userSelect: "none" }}
+              component={Link}
+              to="/home"
+            >
+              {getAppName()}
+            </Text>
           </Group>
 
           <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
