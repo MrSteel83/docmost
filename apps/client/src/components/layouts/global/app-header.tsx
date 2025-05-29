@@ -62,24 +62,23 @@ export function AppHeader() {
             </>
           )}
           
-          <Stack align="start" gap={2}>
-            <Link to="/home">
+          <Group align="center" gap="xs" wrap="nowrap">
+            <Link to="/home" style={{ display: "flex", alignItems: "center" }}>
               <img
-                src="/app_logo.png"
+                src="app_logo.png"
                 alt={getAppName()}
-                height={14}
-                style={{ objectFit: "contain", marginBottom: 2 }}
+                height={32}
+                style={{ objectFit: "contain", marginRight: 4 }}
               />
+              <Text
+                size="lg"
+                fw={600}
+                style={{ color: "inherit", cursor: "pointer", userSelect: "none" }}
+              >
+                {getAppName()}
+              </Text>
             </Link>
-            <Text
-              size="xs"
-              component={Link}
-              to="https://docmost.com"
-              style={{ color: "inherit", cursor: "pointer", userSelect: "none" }}
-            >
-              powered by Docmost
-            </Text>
-          </Stack>
+          </Group>
 
           <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
             {items}
