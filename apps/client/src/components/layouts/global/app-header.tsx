@@ -67,7 +67,7 @@ export function AppHeader() {
               <img
                 src="app_logo.png"
                 height={26}
-                style={{ objectFit: "contain", marginRight: 8 }}
+                style={{ objectFit: "contain", marginRight: 0 }}
               />
             </Link>
             <Text
