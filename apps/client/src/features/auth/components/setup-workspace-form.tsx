@@ -53,6 +53,13 @@ export function SetupWorkspaceForm() {
     <div>
       <Container size={420} className={classes.container}>
         <Box p="xl" className={classes.containerBox}>
+          <Box mb="md" style={{ textAlign: "center" }}>
+            <img
+              src="form_logo.png"
+              height={40}
+              style={{ objectFit: "contain" }}
+            />
+          </Box>
           <Title order={2} ta="center" fw={500} mb="md">
             {t("Create workspace")}
           </Title>
