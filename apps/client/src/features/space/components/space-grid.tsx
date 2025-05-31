@@ -40,9 +40,14 @@ export default function SpaceGrid() {
         {space.name}
       </Text>
       {isAdmin && (
+        <>
           <Text c="dimmed" size="xs" fw={700} mt="md">
             {formatMemberCount(space.memberCount, t)}
           </Text>
+          <Text c="dimmed" size="xs" fw={700} mt="md">
+            "SpaceID:" {space.id}
+          </Text>
+        </>
       )}
     </Card>
   ));
