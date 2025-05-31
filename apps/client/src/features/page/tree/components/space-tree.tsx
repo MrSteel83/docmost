@@ -510,7 +510,6 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
           )}
 
           {!(treeApi.props.disableEdit as boolean) && (
-            <>
               <Menu.Item
                 leftSection={<IconArrowRight size={16} />}
                 onClick={(e) => {
@@ -521,7 +520,9 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
               >
                 {t("Move")}
               </Menu.Item>
-
+            )}
+              
+            {(!(treeApi.props.disableEdit as boolean) || (node.spaceId === "019713aa-aefc-7f89-a687-1168ffa98334")) && (
               <Menu.Item
                 leftSection={<IconCopy size={16} />}
                 onClick={(e) => {
@@ -532,7 +533,9 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
               >
                 {t("Copy")}
               </Menu.Item>
-
+            )}
+          
+            {!(treeApi.props.disableEdit as boolean) && (
               <Menu.Divider />
               <Menu.Item
                 c="red"
@@ -545,7 +548,6 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
               >
                 {t("Delete")}
               </Menu.Item>
-            </>
           )}
         </Menu.Dropdown>
       </Menu>
