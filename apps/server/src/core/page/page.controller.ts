@@ -248,6 +248,8 @@ export class PageController {
     if (!copiedPage) {
       throw new NotFoundException('Page to copy not found');
     }
+    console.log("copied:" + copiedPage.spaceId);
+    console.log("dto:" + dto.spaceId);
     if (copiedPage.spaceId === dto.spaceId) {
       throw new BadRequestException('Page is already in this space');
     }
