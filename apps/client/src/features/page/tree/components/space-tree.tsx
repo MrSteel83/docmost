@@ -536,6 +536,7 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
             )}
           
             {!(treeApi.props.disableEdit as boolean) && (
+            <>
               <Menu.Divider />
               <Menu.Item
                 c="red"
@@ -548,6 +549,7 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
               >
                 {t("Delete")}
               </Menu.Item>
+            </>
           )}
         </Menu.Dropdown>
       </Menu>
