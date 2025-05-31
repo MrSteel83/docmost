@@ -45,7 +45,7 @@ export default function SpaceGrid() {
             {formatMemberCount(space.memberCount, t)}
           </Text>
           <Text c="dimmed" size="xs" fw={700} mt="md">
-            "SpaceID:" {space.id}
+            SpaceID: {space.id}
           </Text>
         </>
       )}
