@@ -254,6 +254,7 @@ export class PageController {
       throw new BadRequestException('Page is already in this space');
     }
 
+    /*
     const abilities = await Promise.all([
       this.spaceAbility.createForUser(user, copiedPage.spaceId),
       this.spaceAbility.createForUser(user, dto.spaceId),
@@ -263,6 +264,27 @@ export class PageController {
       abilities.some((ability) =>
         ability.cannot(SpaceCaslAction.Edit, SpaceCaslSubject.Page),
       )
+    ) {
+      throw new ForbiddenException();
+    }
+    */
+
+    const [sourceAbility, targetAbility] = await Promise.all([
+      this.spaceAbility.createForUser(user, copiedPage.spaceId),
+      this.spaceAbility.createForUser(user, dto.spaceId),
+    ]);
+    
+    const isSourceTemplateSpace = copiedPage.spaceId === "019713aa-aefc-7f89-a687-1168ffa98334";
+    const hasTargetEditPermission = targetAbility.can(SpaceCaslAction.Edit, SpaceCaslSubject.Page);
+    
+    // Standardfall: Wenn kein spezieller Source-Space, müssen beide Berechtigungen vorhanden sein
+    if (
+      (!isSourceTemplateSpace && (
+        sourceAbility.cannot(SpaceCaslAction.Edit, SpaceCaslSubject.Page) ||
+        targetAbility.cannot(SpaceCaslAction.Edit, SpaceCaslSubject.Page)
+      )) ||
+      // Ausnahmefall: 
+      (isSourceTemplateSpace && !hasTargetEditPermission)
     ) {
       throw new ForbiddenException();
     }
