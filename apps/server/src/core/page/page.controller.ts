@@ -262,7 +262,7 @@ export class PageController {
     if (
       abilities.some((ability) =>
         ability.cannot(SpaceCaslAction.Edit, SpaceCaslSubject.Page),
-      ) && (copiedPage.spaceId !== "019713aa-aefc-7f89-a687-1168ffa98334")
+      )
     ) {
       throw new ForbiddenException();
     }
