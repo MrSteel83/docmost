@@ -29,6 +29,7 @@ import SpaceAbilityFactory from '../casl/abilities/space-ability.factory';
 import { PageRepo } from '@docmost/db/repos/page/page.repo';
 import { RecentPageDto } from './dto/recent-page.dto';
 import { CopyPageToSpaceDto } from './dto/copy-page.dto';
+import { EnvironmentService } from '../../integrations/environment/environment.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('pages')
@@ -274,7 +275,8 @@ export class PageController {
       this.spaceAbility.createForUser(user, dto.spaceId),
     ]);
     
-    const isSourceTemplateSpace = copiedPage.spaceId === "019713aa-aefc-7f89-a687-1168ffa98334";
+    //const isSourceTemplateSpace = copiedPage.spaceId === "019713aa-aefc-7f89-a687-1168ffa98334";
+    const isSourceTemplateSpace = copiedPage.spaceId === this.environmentService.getTemplateSpaceId();
     const hasTargetEditPermission = targetAbility.can(SpaceCaslAction.Edit, SpaceCaslSubject.Page);
     
     // Standardfall: Wenn kein spezieller Source-Space, müssen beide Berechtigungen vorhanden sein
