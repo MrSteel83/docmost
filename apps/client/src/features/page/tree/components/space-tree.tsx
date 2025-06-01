@@ -522,7 +522,7 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
               </Menu.Item>
             )}
               
-            {(!(treeApi.props.disableEdit as boolean) || (node.spaceId === "019713aa-aefc-7f89-a687-1168ffa98334")) && (
+            {(!(treeApi.props.disableEdit as boolean) || (node.data.spaceId === "019713aa-aefc-7f89-a687-1168ffa98334")) && (
               <Menu.Item
                 leftSection={<IconCopy size={16} />}
                 onClick={(e) => {
