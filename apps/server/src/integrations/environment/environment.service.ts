@@ -194,6 +194,10 @@ export class EnvironmentService {
     return isDisabled === 'true';
   }
 
+  getTemplateSpaceId(): string {
+    return this.configService.get<string>('TEMPLATE_SPACE_ID');
+  }
+
   isDisableTelemetry(): boolean {
     const disable = this.configService
       .get<string>('DISABLE_TELEMETRY', 'false')
