@@ -195,7 +195,7 @@ export class EnvironmentService {
   }
 
   getTemplateSpaceId(): string {
-    return this.configService.get<string>('TEMPLATE_SPACE_ID');
+    return this.configService.get<string>('TEMPLATE_SPACE_ID', 'abc1234567890');
   }
 
   isDisableTelemetry(): boolean {
