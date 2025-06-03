@@ -276,8 +276,6 @@ export class PageController {
       this.spaceAbility.createForUser(user, dto.spaceId),
     ]);
     
-    //const isSourceTemplateSpace = copiedPage.spaceId === "019713aa-aefc-7f89-a687-1168ffa98334";
-    console.log(this.environmentService.getTemplateSpaceId());
     const isSourceTemplateSpace = copiedPage.spaceId === this.environmentService.getTemplateSpaceId();
     const hasTargetEditPermission = targetAbility.can(SpaceCaslAction.Edit, SpaceCaslSubject.Page);
     
