@@ -31,6 +31,7 @@ import Shares from "@/pages/settings/shares/shares.tsx";
 import ShareLayout from "@/features/share/components/share-layout.tsx";
 import ShareRedirect from '@/pages/share/share-redirect.tsx';
 import { useTrackOrigin } from "@/hooks/use-track-origin";
+import { CustomLinksProvider } from "@/features/CustomLinksProvider";
 
 export default function App() {
   const { t } = useTranslation();
@@ -39,66 +40,68 @@ export default function App() {
 
   return (
     <>
-      <Routes>
-        <Route index element={<Navigate to="/home" />} />
-        <Route path={"/login"} element={<LoginPage />} />
-        <Route path={"/invites/:invitationId"} element={<InviteSignup />} />
-        <Route path={"/forgot-password"} element={<ForgotPassword />} />
-        <Route path={"/password-reset"} element={<PasswordReset />} />
-
-        {!isCloud() && (
-          <Route path={"/setup/register"} element={<SetupWorkspace />} />
-        )}
-
-        {isCloud() && (
-          <>
-            <Route path={"/create"} element={<CreateWorkspace />} />
-            <Route path={"/select"} element={<CloudLogin />} />
-          </>
-        )}
-
-        <Route element={<ShareLayout />}>
-          <Route path={"/share/:shareId/p/:pageSlug"} element={<SharedPage />} />
-          <Route path={"/share/p/:pageSlug"} element={<SharedPage />} />
-        </Route>
-
-        <Route path={"/share/:shareId"} element={<ShareRedirect />} />
-        <Route path={"/p/:pageSlug"} element={<PageRedirect />} />
-
-        <Route element={<Layout />}>
-          <Route path={"/home"} element={<Home />} />
-          <Route path={"/s/:spaceSlug"} element={<SpaceHome />} />
-          <Route
-            path={"/s/:spaceSlug/p/:pageSlug"}
-            element={
-              <ErrorBoundary
-                fallback={<>{t("Failed to load page. An error occurred.")}</>}
-              >
-                <Page />
-              </ErrorBoundary>
-            }
-          />
-
-          <Route path={"/settings"}>
-            <Route path={"account/profile"} element={<AccountSettings />} />
-            <Route
-              path={"account/preferences"}
-              element={<AccountPreferences />}
-            />
-            <Route path={"workspace"} element={<WorkspaceSettings />} />
-            <Route path={"members"} element={<WorkspaceMembers />} />
-            <Route path={"groups"} element={<Groups />} />
-            <Route path={"groups/:groupId"} element={<GroupInfo />} />
-            <Route path={"spaces"} element={<Spaces />} />
-            <Route path={"sharing"} element={<Shares />} />
-            <Route path={"security"} element={<Security />} />
-            {!isCloud() && <Route path={"license"} element={<License />} />}
-            {isCloud() && <Route path={"billing"} element={<Billing />} />}
+      <CustomLinksProvider>
+        <Routes>
+          <Route index element={<Navigate to="/home" />} />
+          <Route path={"/login"} element={<LoginPage />} />
+          <Route path={"/invites/:invitationId"} element={<InviteSignup />} />
+          <Route path={"/forgot-password"} element={<ForgotPassword />} />
+          <Route path={"/password-reset"} element={<PasswordReset />} />
+  
+          {!isCloud() && (
+            <Route path={"/setup/register"} element={<SetupWorkspace />} />
+          )}
+  
+          {isCloud() && (
+            <>
+              <Route path={"/create"} element={<CreateWorkspace />} />
+              <Route path={"/select"} element={<CloudLogin />} />
+            </>
+          )}
+  
+          <Route element={<ShareLayout />}>
+            <Route path={"/share/:shareId/p/:pageSlug"} element={<SharedPage />} />
+            <Route path={"/share/p/:pageSlug"} element={<SharedPage />} />
           </Route>
-        </Route>
-
-        <Route path="*" element={<Error404 />} />
-      </Routes>
+  
+          <Route path={"/share/:shareId"} element={<ShareRedirect />} />
+          <Route path={"/p/:pageSlug"} element={<PageRedirect />} />
+  
+          <Route element={<Layout />}>
+            <Route path={"/home"} element={<Home />} />
+            <Route path={"/s/:spaceSlug"} element={<SpaceHome />} />
+            <Route
+              path={"/s/:spaceSlug/p/:pageSlug"}
+              element={
+                <ErrorBoundary
+                  fallback={<>{t("Failed to load page. An error occurred.")}</>}
+                >
+                  <Page />
+                </ErrorBoundary>
+              }
+            />
+  
+            <Route path={"/settings"}>
+              <Route path={"account/profile"} element={<AccountSettings />} />
+              <Route
+                path={"account/preferences"}
+                element={<AccountPreferences />}
+              />
+              <Route path={"workspace"} element={<WorkspaceSettings />} />
+              <Route path={"members"} element={<WorkspaceMembers />} />
+              <Route path={"groups"} element={<Groups />} />
+              <Route path={"groups/:groupId"} element={<GroupInfo />} />
+              <Route path={"spaces"} element={<Spaces />} />
+              <Route path={"sharing"} element={<Shares />} />
+              <Route path={"security"} element={<Security />} />
+              {!isCloud() && <Route path={"license"} element={<License />} />}
+              {isCloud() && <Route path={"billing"} element={<Billing />} />}
+            </Route>
+          </Route>
+  
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+      </CustomLinksProvider>
     </>
   );
 }
