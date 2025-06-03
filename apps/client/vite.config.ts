@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => {
     BILLING_TRIAL_DAYS,
     APP_NAME,
     DISABLE_SHARING,
+    TEMPLATE_SPACE_ID,
   } = loadEnv(mode, envPath, "");
 
   return {
@@ -29,6 +30,7 @@ export default defineConfig(({ mode }) => {
         BILLING_TRIAL_DAYS,
         APP_NAME,
         DISABLE_SHARING,
+        TEMPLATE_SPACE_ID,
       },
       APP_VERSION: JSON.stringify(process.env.npm_package_version),
     },
