@@ -37,6 +37,7 @@ export function ForgotPasswordForm() {
   }
 
   return (
+    <>
     <Container size={420} className={classes.container}>
       <Box p="xl" className={classes.containerBox}>
         <Box mb="md" style={{ textAlign: "center" }}>
@@ -90,5 +91,6 @@ export function ForgotPasswordForm() {
         </Group>
       </Box>
     )}
+    </>
   );
 }
