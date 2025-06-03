@@ -1,0 +1,14 @@
+[
+  {
+    "label": "Link1",
+    "url": "/link1",
+    "visibleIn": ["login", "profile"],
+    "locale": "de"
+  },
+  {
+    "label": "Link2",
+    "url": "/link2",
+    "visibleIn": ["login"],
+    "locale": "en"
+  }
+]
