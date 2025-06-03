@@ -522,7 +522,6 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
               </Menu.Item>
             )}
 
-            console.log(getTemplateSpaceId());
             {(!(treeApi.props.disableEdit as boolean) || (node.data.spaceId === getTemplateSpaceId())) && (
               <Menu.Item
                 leftSection={<IconCopy size={16} />}
