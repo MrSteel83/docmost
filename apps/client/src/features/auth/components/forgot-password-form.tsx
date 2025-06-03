@@ -82,13 +82,13 @@ export function ForgotPasswordForm() {
     </Container>
     {links.length > 0 && (
       <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
-        <Group position="center" spacing="xs" wrap="wrap">
+        <Group position="center" spacing="xs" style={{ flexWrap: "wrap" }}>
           {links.map((link) => (
             <Anchor key={link.url} href={link.url} target="_blank" size="xs">
               {link.label}
             </Anchor>
           ))}
-        </Group>
+        </Group> 
       </Box>
     )}
     </>
