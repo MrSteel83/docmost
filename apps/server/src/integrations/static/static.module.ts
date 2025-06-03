@@ -46,6 +46,7 @@ export class StaticModule implements OnModuleInit {
           ? this.environmentService.getBillingTrialDays()
           : undefined,
         APP_NAME: this.environmentService.getAppName(),
+        TEMPLATE_SPACE_ID: this.environmentService.getTemplateSpaceId(),
       };
 
       const windowScriptContent = `<script>window.CONFIG=${JSON.stringify(configString)};</script>`;
