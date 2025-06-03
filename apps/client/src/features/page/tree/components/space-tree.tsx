@@ -53,7 +53,7 @@ import { dfs } from "react-arborist/dist/module/utils";
 import { useQueryEmit } from "@/features/websocket/use-query-emit.ts";
 import { buildPageUrl } from "@/features/page/page.utils.ts";
 import { notifications } from "@mantine/notifications";
-import { getAppUrl } from "@/lib/config.ts";
+import { getAppUrl, getTemplateSpaceId } from "@/lib/config.ts";
 import { extractPageSlugId } from "@/lib";
 import { useDeletePageModal } from "@/features/page/hooks/use-delete-page-modal.tsx";
 import { useTranslation } from "react-i18next";
@@ -521,8 +521,9 @@ function NodeMenu({ node, treeApi }: NodeMenuProps) {
                 {t("Move")}
               </Menu.Item>
             )}
-              
-            {(!(treeApi.props.disableEdit as boolean) || (node.data.spaceId === "019713aa-aefc-7f89-a687-1168ffa98334")) && (
+
+            console.log(getTemplateSpaceId());
+            {(!(treeApi.props.disableEdit as boolean) || (node.data.spaceId === getTemplateSpaceId())) && (
               <Menu.Item
                 leftSection={<IconCopy size={16} />}
                 onClick={(e) => {
