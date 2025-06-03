@@ -22,6 +22,7 @@ export default function TopMenu() {
   const [currentUser] = useAtom(currentUserAtom);
   const { logout } = useAuth();
   const { isAdmin } = useUserRole();
+  const customlinks = useCustomLinks();
 
   const user = currentUser?.user;
   const workspace = currentUser?.workspace;
@@ -109,10 +110,10 @@ export default function TopMenu() {
         </Menu.Item>
 
         {/* 🔗 Custom Links (wenn vorhanden) */}
-        {links.length > 0 && (
+        {customlinks.length > 0 && (
           <>
             <Menu.Divider />
-            {links.map((link) => (
+            {customlinks.map((link) => (
               <Menu.Item
                 key={link.url}
                 component="a"
