@@ -3,7 +3,7 @@ import * as z from "zod";
 import { useForm, zodResolver } from "@mantine/form";
 import useAuth from "@/features/auth/hooks/use-auth";
 import { IForgotPassword } from "@/features/auth/types/auth.types";
-import { Group, Anchor, Box, Button, Container, Text, TextInput, Title } from "@mantine/core";
+import { Flex, Group, Anchor, Box, Button, Container, Text, TextInput, Title } from "@mantine/core";
 import classes from "./auth.module.css";
 import { useRedirectIfAuthenticated } from "@/features/auth/hooks/use-redirect-if-authenticated.ts";
 import { useTranslation } from "react-i18next";
@@ -82,13 +82,13 @@ export function ForgotPasswordForm() {
     </Container>
     {links.length > 0 && (
       <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
-        <Group position="center" spacing="xs" style={{ flexWrap: "wrap" }}>
+        <Flex justify="center" wrap="wrap" gap="xs">
           {links.map((link) => (
             <Anchor key={link.url} href={link.url} target="_blank" size="xs">
               {link.label}
             </Anchor>
           ))}
-        </Group> 
+        </Flex> 
       </Box>
     )}
     </>
