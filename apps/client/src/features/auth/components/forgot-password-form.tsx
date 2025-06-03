@@ -7,7 +7,7 @@ import { Group, Anchor, Box, Button, Container, Text, TextInput, Title } from "@
 import classes from "./auth.module.css";
 import { useRedirectIfAuthenticated } from "@/features/auth/hooks/use-redirect-if-authenticated.ts";
 import { useTranslation } from "react-i18next";
-import { useCustomLinks } from "../../features/CustomLinksContext.tsx";
+import { useCustomLinks } from "../../CustomLinksContext.tsx";
 
 const formSchema = z.object({
   email: z
