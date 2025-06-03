@@ -31,7 +31,7 @@ import Shares from "@/pages/settings/shares/shares.tsx";
 import ShareLayout from "@/features/share/components/share-layout.tsx";
 import ShareRedirect from '@/pages/share/share-redirect.tsx';
 import { useTrackOrigin } from "@/hooks/use-track-origin";
-import { CustomLinksProvider } from "@/features/CustomLinksProvider";
+import { CustomLinksProvider } from "@/features/CustomLinksContext.tsx";
 
 export default function App() {
   const { t } = useTranslation();
