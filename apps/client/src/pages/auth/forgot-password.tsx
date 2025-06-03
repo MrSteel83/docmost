@@ -6,7 +6,7 @@ export default function ForgotPassword() {
     return (
         <>
             <Helmet>
-                <title>Forgot Password - {getAppName()}</title>
+                <title>{t(Forgot Password)} - {getAppName()}</title>
             </Helmet>
             <ForgotPasswordForm />
         </>
