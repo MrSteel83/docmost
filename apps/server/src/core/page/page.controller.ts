@@ -39,6 +39,7 @@ export class PageController {
     private readonly pageRepo: PageRepo,
     private readonly pageHistoryService: PageHistoryService,
     private readonly spaceAbility: SpaceAbilityFactory,
+    private environmentService: EnvironmentService,
   ) {}
 
   @HttpCode(HttpStatus.OK)
