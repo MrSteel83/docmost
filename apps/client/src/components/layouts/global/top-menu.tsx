@@ -15,6 +15,7 @@ import useAuth from "@/features/auth/hooks/use-auth.ts";
 import { CustomAvatar } from "@/components/ui/custom-avatar.tsx";
 import { useTranslation } from "react-i18next";
 import useUserRole from "@/hooks/use-user-role.tsx";
+import { useCustomLinks } from "../../features/CustomLinksProvider";
 
 export default function TopMenu() {
   const { t } = useTranslation();
@@ -107,6 +108,23 @@ export default function TopMenu() {
           {t("My preferences")}
         </Menu.Item>
 
+        {/* 🔗 Custom Links (wenn vorhanden) */}
+        {links.length > 0 && (
+          <>
+            <Menu.Divider />
+            {links.map((link) => (
+              <Menu.Item
+                key={link.url}
+                component="a"
+                href={link.url}
+                target="_blank"
+              >
+                {link.label}
+              </Menu.Item>
+            ))}
+          </>
+        )}
+        
         <Menu.Divider />
 
         <Menu.Item onClick={logout} leftSection={<IconLogout size={16} />}>
