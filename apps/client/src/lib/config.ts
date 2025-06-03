@@ -82,6 +82,10 @@ export function isSharingDisabled(): boolean {
   return castToBoolean(getConfigValue("DISABLE_SHARING","FALSE"));
 }
 
+export function getTemplateSpaceId(): string {
+  return getConfigValue("TEMPLATE_SPACE_ID","abc1234567890");
+}
+
 function getConfigValue(key: string, defaultValue: string = undefined): string {
   const rawValue = import.meta.env.DEV
     ? process?.env?.[key]
