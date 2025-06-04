@@ -18,6 +18,7 @@ import classes from "@/features/auth/components/auth.module.css";
 import { useGetInvitationQuery } from "@/features/workspace/queries/workspace-query.ts";
 import { useRedirectIfAuthenticated } from "@/features/auth/hooks/use-redirect-if-authenticated.ts";
 import { useTranslation } from "react-i18next";
+import { useCustomLinks } from "../../CustomLinksContext.tsx";
 
 const formSchema = z.object({
   name: z.string().trim().min(1),
@@ -30,6 +31,7 @@ export function InviteSignUpForm() {
   const { t } = useTranslation();
   const params = useParams();
   const [searchParams] = useSearchParams();
+  const links = useCustomLinks();
 
   const { data: invitation, isError } = useGetInvitationQuery(
     params?.invitationId,
@@ -65,6 +67,7 @@ export function InviteSignUpForm() {
   }
 
   return (
+    <>
     <Container size={420} className={classes.container}>
       <Box p="xl" className={classes.containerBox}>
         <Box mb="md" style={{ textAlign: "center" }}>
@@ -114,5 +117,17 @@ export function InviteSignUpForm() {
         </Stack>
       </Box>
     </Container>
+    {links.length > 0 && (
+      <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
+        <Flex justify="center" wrap="wrap" gap="xs">
+          {links.map((link) => (
+            <Anchor key={link.url} href={link.url} target="_blank" size="xs" c="dimmed">
+              {link.label}
+            </Anchor>
+          ))}
+        </Flex> 
+      </Box>
+    )}
+    </>
   );
 }
