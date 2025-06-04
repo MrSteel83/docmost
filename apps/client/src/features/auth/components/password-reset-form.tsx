@@ -6,6 +6,7 @@ import { Box, Button, Container, PasswordInput, Title } from "@mantine/core";
 import classes from "./auth.module.css";
 import { useRedirectIfAuthenticated } from "@/features/auth/hooks/use-redirect-if-authenticated.ts";
 import { useTranslation } from "react-i18next";
+import { useCustomLinks } from "../../CustomLinksContext.tsx";
 
 const formSchema = z.object({
   newPassword: z
@@ -20,6 +21,7 @@ interface PasswordResetFormProps {
 export function PasswordResetForm({ resetToken }: PasswordResetFormProps) {
   const { t } = useTranslation();
   const { passwordReset, isLoading } = useAuth();
+  const links = useCustomLinks();
   useRedirectIfAuthenticated();
 
   const form = useForm<IPasswordReset>({
@@ -37,6 +39,7 @@ export function PasswordResetForm({ resetToken }: PasswordResetFormProps) {
   }
 
   return (
+    <>
     <Container size={420} className={classes.container}>
       <Box p="xl" className={classes.containerBox}>
         <Box mb="md" style={{ textAlign: "center" }}>
@@ -66,5 +69,17 @@ export function PasswordResetForm({ resetToken }: PasswordResetFormProps) {
         </form>
       </Box>
     </Container>
+    {links.length > 0 && (
+      <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
+        <Flex justify="center" wrap="wrap" gap="xs">
+          {links.map((link) => (
+            <Anchor key={link.url} href={link.url} target="_blank" size="xs" c="dimmed">
+              {link.label}
+            </Anchor>
+          ))}
+        </Flex> 
+      </Box>
+    )}
+    </>
   );
 }
