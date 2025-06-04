@@ -11,6 +11,7 @@ import {
   Box,
   Anchor,
   Group,
+  Flex,
 } from "@mantine/core";
 import classes from "./auth.module.css";
 import { useRedirectIfAuthenticated } from "@/features/auth/hooks/use-redirect-if-authenticated.ts";
