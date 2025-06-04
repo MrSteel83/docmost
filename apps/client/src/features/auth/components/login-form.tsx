@@ -21,10 +21,13 @@ import SsoLogin from "@/ee/components/sso-login.tsx";
 import { useWorkspacePublicDataQuery } from "@/features/workspace/queries/workspace-query.ts";
 import { Error404 } from "@/components/ui/error-404.tsx";
 import React from "react";
+import { useCustomLinks } from "../../CustomLinksContext.tsx";
 
 export function LoginForm() {
   const { t } = useTranslation();
   const { signIn, isLoading } = useAuth();
+  const links = useCustomLinks();
+  
   useRedirectIfAuthenticated();
   const {
     data,
@@ -62,6 +65,7 @@ export function LoginForm() {
   }
 
   return (
+    <>
     <Container size={420} className={classes.container}>
         <Box p="xl" className={classes.containerBox}>
           <Box mb="md" style={{ textAlign: "center" }}>
@@ -117,5 +121,17 @@ export function LoginForm() {
         )}
       </Box>
     </Container>
+    {links.length > 0 && (
+      <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
+        <Flex justify="center" wrap="wrap" gap="xs">
+          {links.map((link) => (
+            <Anchor key={link.url} href={link.url} target="_blank" size="xs" c="dimmed">
+              {link.label}
+            </Anchor>
+          ))}
+        </Flex> 
+      </Box>
+    )}
+    </>
   );
 }
