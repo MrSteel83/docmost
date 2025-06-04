@@ -10,6 +10,8 @@ import {
   PasswordInput,
   Box,
   Stack,
+  Flex,
+  Anchor,
 } from "@mantine/core";
 import { useParams, useSearchParams } from "react-router-dom";
 import { IRegister } from "@/features/auth/types/auth.types";
