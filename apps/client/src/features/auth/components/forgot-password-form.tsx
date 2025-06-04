@@ -84,7 +84,7 @@ export function ForgotPasswordForm() {
       <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
         <Flex justify="center" wrap="wrap" gap="xs">
           {links.map((link) => (
-            <Anchor key={link.url} href={link.url} target="_blank" size="xs">
+            <Anchor key={link.url} href={link.url} target="_blank" size="xs" c="dimmed">
               {link.label}
             </Anchor>
           ))}
