@@ -90,7 +90,7 @@ export class AuthService {
     });
 
     if (!user || user.deletedAt) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Benutzer nicht gefunden');
     }
 
     const comparePasswords = await comparePasswordHash(
@@ -99,7 +99,7 @@ export class AuthService {
     );
 
     if (!comparePasswords) {
-      throw new BadRequestException('Current password is incorrect');
+      throw new BadRequestException('Aktuelles Passwort ist ungültig');
     }
 
     const newPasswordHash = await hashPassword(dto.newPassword);
@@ -114,7 +114,7 @@ export class AuthService {
     const emailTemplate = ChangePasswordEmail({ username: user.name });
     await this.mailService.sendToQueue({
       to: user.email,
-      subject: 'Your password has been changed',
+      subject: 'Dein Passwort wurde geändert',
       template: emailTemplate,
     });
   }
@@ -151,7 +151,7 @@ export class AuthService {
 
     await this.mailService.sendToQueue({
       to: user.email,
-      subject: 'Reset your password',
+      subject: 'Passwort zurücksetzen',
       template: emailTemplate,
     });
   }
@@ -167,12 +167,12 @@ export class AuthService {
       userToken.type !== UserTokenType.FORGOT_PASSWORD ||
       userToken.expiresAt < new Date()
     ) {
-      throw new BadRequestException('Invalid or expired token');
+      throw new BadRequestException('Schlüssel ist ungültig oder abgelaufen');
     }
 
     const user = await this.userRepo.findById(userToken.userId, workspaceId);
     if (!user || user.deletedAt) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Benutzer nicht gefunden');
     }
 
     const newPasswordHash = await hashPassword(passwordResetDto.newPassword);
@@ -197,7 +197,7 @@ export class AuthService {
     const emailTemplate = ChangePasswordEmail({ username: user.name });
     await this.mailService.sendToQueue({
       to: user.email,
-      subject: 'Your password has been changed',
+      subject: 'Dein Passwort wurde geändert',
       template: emailTemplate,
     });
 
@@ -218,7 +218,7 @@ export class AuthService {
       userToken.type !== userTokenDto.type ||
       userToken.expiresAt < new Date()
     ) {
-      throw new BadRequestException('Invalid or expired token');
+      throw new BadRequestException('Schlüssel ist ungültig oder abgelaufen');
     }
   }
 
