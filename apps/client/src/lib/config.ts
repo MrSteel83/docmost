@@ -70,6 +70,11 @@ export function getFileUploadSizeLimit() {
   return bytes(limit);
 }
 
+export function getFileImportSizeLimit() {
+  const limit = getConfigValue("FILE_IMPORT_SIZE_LIMIT", "200mb");
+  return bytes(limit);
+}
+
 export function getDrawioUrl() {
   return getConfigValue("DRAWIO_URL", "https://embed.diagrams.net");
 }
@@ -78,12 +83,25 @@ export function getBillingTrialDays() {
   return getConfigValue("BILLING_TRIAL_DAYS");
 }
 
+<<<<<<< HEAD
 export function isSharingDisabled(): boolean {
   return castToBoolean(getConfigValue("DISABLE_SHARING","FALSE"));
 }
 
 export function getTemplateSpaceId(): string {
   return getConfigValue("TEMPLATE_SPACE_ID","abc1234567890");
+=======
+export function getPostHogHost() {
+  return getConfigValue("POSTHOG_HOST");
+}
+
+export function isPostHogEnabled(): boolean {
+  return Boolean(getPostHogHost() && getPostHogKey());
+}
+
+export function getPostHogKey() {
+  return getConfigValue("POSTHOG_KEY");
+>>>>>>> 232cea8cc97fc17ea08823bc613c2aafbfa74589
 }
 
 function getConfigValue(key: string, defaultValue: string = undefined): string {

@@ -37,6 +37,8 @@ export class StaticModule implements OnModuleInit {
         CLOUD: this.environmentService.isCloud(),
         FILE_UPLOAD_SIZE_LIMIT:
           this.environmentService.getFileUploadSizeLimit(),
+        FILE_IMPORT_SIZE_LIMIT:
+          this.environmentService.getFileImportSizeLimit(),
         DRAWIO_URL: this.environmentService.getDrawioUrl(),
         SUBDOMAIN_HOST: this.environmentService.isCloud()
           ? this.environmentService.getSubdomainHost()
@@ -45,8 +47,13 @@ export class StaticModule implements OnModuleInit {
         BILLING_TRIAL_DAYS: this.environmentService.isCloud()
           ? this.environmentService.getBillingTrialDays()
           : undefined,
+<<<<<<< HEAD
         APP_NAME: this.environmentService.getAppName(),
         TEMPLATE_SPACE_ID: this.environmentService.getTemplateSpaceId(),
+=======
+        POSTHOG_HOST: this.environmentService.getPostHogHost(),
+        POSTHOG_KEY: this.environmentService.getPostHogKey(),
+>>>>>>> 232cea8cc97fc17ea08823bc613c2aafbfa74589
       };
 
       const windowScriptContent = `<script>window.CONFIG=${JSON.stringify(configString)};</script>`;
