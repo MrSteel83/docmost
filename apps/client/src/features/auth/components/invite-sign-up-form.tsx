@@ -20,11 +20,9 @@ import classes from "@/features/auth/components/auth.module.css";
 import { useGetInvitationQuery } from "@/features/workspace/queries/workspace-query.ts";
 import { useRedirectIfAuthenticated } from "@/features/auth/hooks/use-redirect-if-authenticated.ts";
 import { useTranslation } from "react-i18next";
-<<<<<<< HEAD
 import { useCustomLinks } from "../../CustomLinksContext.tsx";
-=======
 import SsoLogin from "@/ee/components/sso-login.tsx";
->>>>>>> 232cea8cc97fc17ea08823bc613c2aafbfa74589
+
 
 const formSchema = z.object({
   name: z.string().trim().min(1),
