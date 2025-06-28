@@ -30,11 +30,7 @@ export const queryClient = new QueryClient({
     },
   },
 });
-
-<<<<<<< HEAD
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement 
-=======
+ 
 if (isCloud() && isPostHogEnabled) {
   posthog.init(getPostHogKey(), {
     api_host: getPostHogHost(),
@@ -45,7 +41,7 @@ if (isCloud() && isPostHogEnabled) {
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
->>>>>>> 232cea8cc97fc17ea08823bc613c2aafbfa74589
+
 );
 
 root.render(
