@@ -24,7 +24,9 @@ export const ForgotPasswordEmail = ({ username, resetLink }: Props) => {
         <Text style={paragraph}>
           {emailTexts.text2}
         </Text>
-          <Link href={resetLink}>{emailTexts.text3}</Link>
+        <Button href={resetLink} style={button}>
+          {emailTexts.text3}
+        </Button>
         <Text style={paragraph}>
           {emailTexts.text4}
         </Text>
