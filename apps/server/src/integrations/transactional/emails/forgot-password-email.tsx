@@ -8,17 +8,25 @@ interface Props {
   resetLink: string;
 }
 
+// text over environment variables
+const emailTexts = {
+  text1: process.env.EMAIL_PW_FORGOT_T1 || 'Hi ',
+  text2: process.env.EMAIL_PW_FORGOT_T2 || 'We received a request from you to reset your password.',
+  text3: process.env.EMAIL_PW_FORGOT_T3 || ' Click here to set a new password',
+  text4: process.env.EMAIL_PW_FORGOT_T4 || 'If you did not request a password reset, please ignore this email.'
+};
+
 export const ForgotPasswordEmail = ({ username, resetLink }: Props) => {
   return (
     <MailBody>
       <Section style={content}>
-        <Text style={paragraph}>Hi {username},</Text>
+        <Text style={paragraph}>{emailTexts.text1}{username},</Text>
         <Text style={paragraph}>
-          We received a request from you to reset your password.
+          {emailTexts.text2}
         </Text>
-          <Link href={resetLink}> Click here to set a new password</Link>
+          <Link href={resetLink}>{emailTexts.text3}</Link>
         <Text style={paragraph}>
-          If you did not request a password reset, please ignore this email.
+          {emailTexts.text4}
         </Text>
       </Section>
     </MailBody>
