@@ -17,13 +17,14 @@ export const container = {
 
 export const content = {
   padding: '5px 20px 10px 20px',
+  textAlign: 'center' as const,
 };
 
 export const paragraph = {
   fontFamily:
     "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
   color: '#333',
-  lineHeight: 1,
+  lineHeight: 1.5,
   fontSize: 14,
 };
 
@@ -39,7 +40,7 @@ export const h1 = {
 export const logo = {
   display: 'flex',
   justifyContent: 'center',
-  alingItems: 'center',
+  alignItems: 'center',
   padding: 4,
 };
 
@@ -60,7 +61,8 @@ export const button = {
   fontSize: '16px',
   textDecoration: 'none',
   textAlign: 'center' as const,
-  display: 'block',
+  display: 'inline-block',
   width: '100px',
   padding: '8px',
+  margin: '0 auto',
 };
