@@ -14,6 +14,12 @@ interface MailBodyProps {
   children: React.ReactNode;
 }
 
+// text over environment variables
+const emailTexts = {
+  text1: process.env.EMAIL_FOOTER_T1 || 'Docmost, All Rights Reserved',
+  text2: process.env.EMAIL_FOOTER_T2 || '',
+};
+
 export function MailBody({ children }: MailBodyProps) {
   return (
     <Html>
@@ -40,7 +46,7 @@ export function MailFooter() {
     <Section style={footer}>
       <Row>
         <Text style={{ textAlign: 'center', color: '#706a7b' }}>
-          © {new Date().getFullYear()} Docmost, All Rights Reserved <br />
+          {emailTexts.text1}<br /><br />{emailTexts.text2}
         </Text>
       </Row>
     </Section>
