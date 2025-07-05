@@ -10,25 +10,27 @@ interface Props {
 
 // text over environment variables
 const emailTexts = {
-  text1: process.env.EMAIL_PW_FORGOT_T1 || 'Hi ',
-  text2: process.env.EMAIL_PW_FORGOT_T2 || 'We received a request from you to reset your password.',
-  text3: process.env.EMAIL_PW_FORGOT_T3 || ' Click here to set a new password',
-  text4: process.env.EMAIL_PW_FORGOT_T4 || 'If you did not request a password reset, please ignore this email.'
+  text1: process.env.EMAIL_PW_FORGOT_T1 || 'Password reset requested',
+  text2: process.env.EMAIL_PW_FORGOT_T2 || 'Hi ',
+  text3: process.env.EMAIL_PW_FORGOT_T3 || 'We received a request from you to reset your password.',
+  text4: process.env.EMAIL_PW_FORGOT_T4 || 'Password reset',
+  text5: process.env.EMAIL_PW_FORGOT_T5 || 'If you did not request a password reset, please ignore this email.'
 };
 
 export const ForgotPasswordEmail = ({ username, resetLink }: Props) => {
   return (
     <MailBody>
       <Section style={content}>
-        <Text style={paragraph}>{emailTexts.text1}{username},</Text>
+        <Text style={h1}>{emailTexts.text1}</Text>
+        <Text style={paragraph}>{emailTexts.text2}{username},</Text>
         <Text style={paragraph}>
-          {emailTexts.text2}
+          {emailTexts.text3}
         </Text>
         <Button href={resetLink} style={button}>
-          {emailTexts.text3}
+          {emailTexts.text4}
         </Button>
         <Text style={paragraph}>
-          {emailTexts.text4}
+          {emailTexts.text5}
         </Text>
       </Section>
     </MailBody>
