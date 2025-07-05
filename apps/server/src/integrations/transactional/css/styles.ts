@@ -55,14 +55,14 @@ export const footer = {
 
 export const button = {
   backgroundColor: '#176ae5',
-  borderRadius: '3px',
+  borderRadius: '10px',
   color: '#fff',
   fontFamily: "'Open Sans', 'Helvetica Neue', Arial",
   fontSize: '16px',
   textDecoration: 'none',
   textAlign: 'center' as const,
   display: 'inline-block',
-  width: '100px',
+  maxWidth: '200px',
   padding: '8px',
   margin: '0 auto',
 };
