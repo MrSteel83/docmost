@@ -37,9 +37,18 @@ export function MailBody({ children }: MailBodyProps) {
 }
 
 export function MailHeader() {
+  const logoUrl = process.env.EMAIL_LOGO_URL;
+  
   return (
     <Section style={logo}>
-      {/* <Heading style={h1}>docmost</Heading> */}
+      {logoUrl && (
+        <Img
+          src={logoUrl}
+          width="auto"
+          height="100"
+          style={{ margin: '0 auto' }}
+        />
+      )}
     </Section>
   );
 }
