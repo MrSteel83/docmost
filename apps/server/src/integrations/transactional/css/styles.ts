@@ -63,6 +63,6 @@ export const button = {
   textAlign: 'center' as const,
   display: 'inline-block',
   maxWidth: '200px',
-  padding: '8px',
+  padding: '15px',
   margin: '0 auto',
 };
