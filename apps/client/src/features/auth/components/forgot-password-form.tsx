@@ -43,7 +43,7 @@ export function ForgotPasswordForm() {
         <Box mb="md" style={{ textAlign: "center" }}>
             <img
               src="form_logo.png"
-              height={40}
+              height={140}
               style={{ objectFit: "contain" }}
             />
           </Box>
@@ -65,7 +65,7 @@ export function ForgotPasswordForm() {
           )}
 
           {isTokenSent && (
-            <Text>
+            <Text style={{ textAlign: 'center' }}>
               {t(
                 "A password reset link has been sent to your email. Please check your inbox.",
               )}
