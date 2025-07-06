@@ -30,8 +30,10 @@ export function MailBody({ children }: MailBodyProps) {
     <Html>
       <Head />
       <Body style={main}>
-        <MailHeader />
-        <Container style={container}>{children}</Container>
+        <Container style={container}>
+          <MailHeader />
+          {children}
+        </Container>
         <MailFooter />
       </Body>
     </Html>
