@@ -11,8 +11,7 @@ interface Props {
 // text over environment variables
 const emailTexts = {
   text1: process.env.EMAIL_IN_ACCEPTED_T1 || 'Invitation accepted',
-  text2: process.env.EMAIL_IN_ACCEPTED_T2 || 'Hi there,',
-  text3: process.env.EMAIL_IN_ACCEPTED_T3 || 'has accepted your invitation, and is now a member of the workspace.'
+  text2: process.env.EMAIL_IN_ACCEPTED_T2 || 'has accepted your invitation, and is now a member of the workspace.'
 };
 
 export const InvitationAcceptedEmail = ({
@@ -23,9 +22,8 @@ export const InvitationAcceptedEmail = ({
     <MailBody>
       <Section style={content}>
         <Text style={h1}>{emailTexts.text1}</Text>
-        <Text style={paragraph}>{emailTexts.text2}</Text>
         <Text style={paragraph}>
-          {invitedUserName} ({invitedUserEmail}) {emailTexts.text3}
+          {invitedUserName} ({invitedUserEmail}) {emailTexts.text2}
         </Text>
       </Section>
     </MailBody>
