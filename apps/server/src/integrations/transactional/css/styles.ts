@@ -18,6 +18,7 @@ export const container = {
 export const content = {
   padding: '5px 20px 10px 20px',
   textAlign: 'center' as const,
+  margin-top:15px,
 };
 
 export const paragraph = {
