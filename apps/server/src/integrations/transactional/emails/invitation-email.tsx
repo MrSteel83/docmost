@@ -10,10 +10,9 @@ interface Props {
 // text over environment variables
 const emailTexts = {
   text1: process.env.EMAIL_IN_SEND_T1 || 'Your invitation',
-  text2: process.env.EMAIL_IN_SEND_T2 || 'Hi there,',
-  text3: process.env.EMAIL_IN_SEND_T3 || 'You have been invited to Docmost.',
-  text4: process.env.EMAIL_IN_SEND_T4 || 'Please click the button below to accept this invitation.',
-  text5: process.env.EMAIL_IN_SEND_T5 || 'Accept Invite'
+  text2: process.env.EMAIL_IN_SEND_T2 || 'You have been invited to Docmost.',
+  text3: process.env.EMAIL_IN_SEND_T3 || 'Please click the button below to accept this invitation.',
+  text4: process.env.EMAIL_IN_SEND_T4 || 'Accept Invite'
 };
 
 export const InvitationEmail = ({ inviteLink }: Props) => {
@@ -23,7 +22,6 @@ export const InvitationEmail = ({ inviteLink }: Props) => {
         <Text style={h1}>{emailTexts.text1}</Text>
         <Text style={paragraph}>{emailTexts.text2}</Text>
         <Text style={paragraph}>{emailTexts.text3}</Text>
-        <Text style={paragraph}>{emailTexts.text4}</Text>
       </Section>
       <Section
         style={{
@@ -35,7 +33,7 @@ export const InvitationEmail = ({ inviteLink }: Props) => {
         }}
       >
         <Button href={inviteLink} style={button}>
-          {emailTexts.text5}
+          {emailTexts.text4}
         </Button>
       </Section>
     </MailBody>
