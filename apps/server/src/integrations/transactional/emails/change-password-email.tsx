@@ -11,7 +11,7 @@ interface Props {
 const emailTexts = {
   text1: process.env.EMAIL_PW_CHANGED_T1 || 'Password changed successfully',
   text2: process.env.EMAIL_PW_CHANGED_T2 || 'Hi ',
-  text3: process.env.EMAIL_PW_CHANGED_T3 || 'This is a confirmation that your password has been changed.',
+  text3: process.env.EMAIL_PW_CHANGED_T3 || 'This is a confirmation that your password has been changed.'
 };
 
 export const ChangePasswordEmail = ({ username }: Props) => {
