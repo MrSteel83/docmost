@@ -13,12 +13,12 @@ export const container = {
   borderRadius: '2px',
   borderWidth: '1px',
   boxShadow: '0 2px 0 rgba(0, 0, 150, 0.025), 2px 4px 0 rgba(0, 0, 150, 0.015)',
+  padding: '15px 0px 0px 0px',
 };
 
 export const content = {
   padding: '5px 20px 10px 20px',
   textAlign: 'center' as const,
-  margin: '15px 0 0 0',
 };
 
 export const paragraph = {
