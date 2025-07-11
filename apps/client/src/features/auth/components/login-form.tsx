@@ -27,31 +27,8 @@ import { useCustomLinks } from "../../CustomLinksContext.tsx";
 export function LoginForm() {
   const { t } = useTranslation();
   const { signIn, isLoading } = useAuth();
-  //const links = useCustomLinks();
-  const links = [
-  {
-    label: "Registrierung",
-    url: "/register",
-    visibleIn: ["form"],
-    locale: "de"
-  },
-  {
-    label: "Impressum",
-    url: "/impressum",
-    visibleIn: ["form", "menu"],
-    locale: "de"
-  },
-  {
-    label: "Datenschutz",
-    url: "/privacy",
-    visibleIn: ["form"],
-    locale: "de"
-  }
-];
+  const links = useCustomLinks();
   const formLinks = links.filter(link => link.visibleIn.includes("form"));
-
-  console.log("Alle Links:", links);
-console.log("Gefiltert (menu):", formLinks);
   
   useRedirectIfAuthenticated();
   const {
