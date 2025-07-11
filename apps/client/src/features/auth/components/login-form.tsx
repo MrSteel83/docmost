@@ -28,6 +28,7 @@ export function LoginForm() {
   const { t } = useTranslation();
   const { signIn, isLoading } = useAuth();
   const links = useCustomLinks();
+  const loginLinks = links.filter(link => link.visibleIn.includes("login"));
   
   useRedirectIfAuthenticated();
   const {
@@ -122,10 +123,10 @@ export function LoginForm() {
         )}
       </Box>
     </Container>
-    {links.length > 0 && (
+    {loginLinks.length > 0 && (
       <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
         <Flex justify="center" wrap="wrap" gap="xs">
-          {links.map((link) => (
+          {loginLinks.map((link) => (
             <Anchor key={link.url} href={link.url} target="_blank" size="xs" c="dimmed">
               {link.label}
             </Anchor>
