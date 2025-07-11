@@ -22,7 +22,8 @@ export default function TopMenu() {
   const [currentUser] = useAtom(currentUserAtom);
   const { logout } = useAuth();
   const { isAdmin } = useUserRole();
-  const customlinks = useCustomLinks();
+  const links = useCustomLinks();
+  const customlinks = links.filter(link => link.visibleIn.includes("menu"));
 
   const user = currentUser?.user;
   const workspace = currentUser?.workspace;
