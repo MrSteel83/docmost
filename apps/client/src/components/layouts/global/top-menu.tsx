@@ -25,6 +25,9 @@ export default function TopMenu() {
   const links = useCustomLinks();
   const customlinks = links.filter(link => link.visibleIn.includes("menu"));
 
+  console.log("Alle Links:", links);
+console.log("Gefiltert (menu):", customlinks);
+  
   const user = currentUser?.user;
   const workspace = currentUser?.workspace;
 
