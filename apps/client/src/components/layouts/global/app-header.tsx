@@ -73,7 +73,7 @@ export function AppHeader() {
             <Text
               size="md"
               fw={500}
-              style={{ cursor: "pointer", userSelect: "none", textTransform: "uppercase" }}
+              style={{ cursor: "pointer", userSelect: "none", textTransform: "uppercase", whiteSpace: "nowrap" }}
               component={Link}
               to="/home"
             >
