@@ -36,6 +36,7 @@ export function InviteSignUpForm() {
   const params = useParams();
   const [searchParams] = useSearchParams();
   const links = useCustomLinks();
+  const formLinks = links.filter(link => link.visibleIn.includes("form"));
 
   const { data: invitation, isError } = useGetInvitationQuery(
     params?.invitationId,
@@ -125,10 +126,10 @@ export function InviteSignUpForm() {
         )}
       </Box>
     </Container>
-    {links.length > 0 && (
+    {formLinks.length > 0 && (
       <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
         <Flex justify="center" wrap="wrap" gap="xs">
-          {links.map((link) => (
+          {formLinks.map((link) => (
             <Anchor key={link.url} href={link.url} target="_blank" size="xs" c="dimmed">
               {link.label}
             </Anchor>
