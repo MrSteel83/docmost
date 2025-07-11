@@ -22,6 +22,7 @@ export function ForgotPasswordForm() {
   const [isTokenSent, setIsTokenSent] = useState<boolean>(false);
   useRedirectIfAuthenticated();
   const links = useCustomLinks();
+  const formLinks = links.filter(link => link.visibleIn.includes("form"));
 
   const form = useForm<IForgotPassword>({
     validate: zodResolver(formSchema),
@@ -80,10 +81,10 @@ export function ForgotPasswordForm() {
         </form>
       </Box>
     </Container>
-    {links.length > 0 && (
+    {formLinks.length > 0 && (
       <Box mt="md" mb="lg" style={{ textAlign: "center" }}>
         <Flex justify="center" wrap="wrap" gap="xs">
-          {links.map((link) => (
+          {formLinks.map((link) => (
             <Anchor key={link.url} href={link.url} target="_blank" size="xs" c="dimmed">
               {link.label}
             </Anchor>
