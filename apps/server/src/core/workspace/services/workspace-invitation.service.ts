@@ -372,7 +372,7 @@ export class WorkspaceInvitationService {
 
     await this.mailService.sendToQueue({
       to: inviteeEmail,
-      subject: `Du wurdest eingeladen`,
+      subject: `${this.environmentService.getAppName()} – Du wurdest eingeladen`,
       template: emailTemplate,
     });
   }
