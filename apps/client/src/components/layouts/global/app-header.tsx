@@ -66,14 +66,14 @@ export function AppHeader() {
             <Link to="/home" style={{ display: "flex", alignItems: "center" }}>
               <img
                 src="app_logo.png"
-                height={26}
+                height={30}
                 style={{ objectFit: "contain", marginRight: 0 }}
               />
             </Link>
             <Text
               size="md"
               fw={500}
-              style={{ cursor: "pointer", userSelect: "none", text-transform: "uppercase" }}
+              style={{ cursor: "pointer", userSelect: "none", textTransform: "uppercase" }}
               component={Link}
               to="/home"
             >
